@@ -1,0 +1,38 @@
+{
+    "Reasoning with General Knowledge": {
+        "category_keys": [
+            "vidQry_1",
+            "vidQry_9",
+            "vidQry_14",
+            "vidQry_15",
+            "vidQry_17",
+            "vidQry_19"
+        ]
+    },
+    "Reasoning": {
+        "category_keys": [
+            "vidQry_2",
+            "vidQry_4",
+            "vidQry_5",
+            "vidQry_7",
+            "vidQry_8",
+            "vidQry_11",
+            "vidQry_18"
+        ]
+    },
+    "Standard with Special Attribute": {
+        "category_keys": [
+            "vidQry_3",
+            "vidQry_10",
+            "vidQry_12",
+            "vidQry_13"
+        ]
+    },
+    "Standard": {
+        "category_keys": [
+            "vidQry_6",
+            "vidQry_16",
+            "vidQry_20"
+        ]
+    }
+}

@@ -1,0 +1,14 @@
+# Ignore video files
+VidSum-Reason/data/videos/*.mp4
+
+# Ignore large dataset files
+Standard-VidSum/*.h5
+
+# Optional: Ignore all .h5 or .mp4 files anywhere
+# *.mp4
+# *.h5
+
+# Ignore any backup or temporary files
+*~
+*.swp
+.DS_Store

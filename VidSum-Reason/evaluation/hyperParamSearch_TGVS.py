@@ -1,0 +1,209 @@
+#hyperParamSearch_TGVS
+
+#hyperParamSearch_TGVS
+
+import argparse
+import json
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+import os
+import csv
+import sys 
+sys.path.append('/root/vidSum')
+import numpy as np
+from src.model.heuristic_prediction import heuristic_predicator_v5
+from src.evaluation.knapsack_implementation import knapSack
+from src.evaluation.evaluation_metrics import evaluate_summary_fscore
+
+
+def segment_video(N, fragment_size):
+    frames_per_segment = max(1, int((fragment_size / 100) * N))  # at least 1 frame
+    segments = []
+    for start in range(0, N, frames_per_segment):
+        end = min(start + frames_per_segment, N)
+        segments.append((start, end-1))  # segment is [start, end)
+
+    return np.array(segments)
+
+def generate_summary(scores, fragment_size, summary_size):
+    scores = np.array(scores)
+    n_frames = scores.shape[0]
+    shot_bound = segment_video(n_frames, fragment_size)
+    # Compute shot-level importance scores by taking the average importance scores of all frames in the shot
+    shot_scores = []
+    shot_lengths = []
+    portaion = summary_size/100
+    for shot in shot_bound:
+        shot_lengths.append(shot[1]-shot[0]+1)
+        shot_scores.append((scores[shot[0]:shot[1]+1].mean()).item())
+    
+        # Select the best shots using the knapsack implementation
+        final_max_length = int((shot[1]+1)*portaion)# knapsack budget
+        selected = knapSack(final_max_length, shot_lengths, shot_scores, len(shot_lengths))
+        
+        # Select all frames from each selected shot (by setting their value in the summary vector to 1)
+        summary = np.zeros(shot[1]+1, dtype=np.int8)
+        for shot in selected:
+            summary[shot_bound[shot][0]:shot_bound[shot][1]+1] = 1
+
+    return summary
+
+def evaluate_summary_TGVS(frames_score_file, gt_data, fragment_size, summary_size):
+    split_f1_score = []
+    with open(frames_score_file, 'r') as json_file:
+        machine_scores = json.load(json_file)
+    for test_key in machine_scores.keys():
+        gt_scores = gt_data[test_key]
+        gt_summary = generate_summary(gt_scores, fragment_size, summary_size)
+        predicted_score = machine_scores[test_key]
+        machine_summary = generate_summary(predicted_score, fragment_size, summary_size)
+        f1_score = evaluate_summary_fscore(machine_summary, np.array([gt_summary]), eval_method='avg')
+        split_f1_score.append(f1_score)
+
+    mean_f1 = np.mean(split_f1_score)
+
+    return mean_f1
+
+
+def run(args, fragment_size, summary_portion):
+
+    work_dir = args.work_dir
+    splits_file = args.splits_file
+    gt_dir = args.gt_dir
+    metric = 'tvsum'
+    meta_data_dir = args.meta_data_dir
+    metrics_output_file = args.metrics_output_file
+
+    FragmentSize = fragment_size
+    SummaryPortaion = summary_portion
+    
+    metric_dir = f'{work_dir}/Eval_FS{FragmentSize}@SP{SummaryPortaion}'
+    if not os.path.exists(metric_dir):
+        os.makedirs(metric_dir)
+
+    ## init params search range
+
+    p1_range = range(0, 101, 10)
+
+    config = args.config + f'@FS{FragmentSize}@SP{SummaryPortaion}'
+    print(meta_data_dir)
+    if not os.path.exists(meta_data_dir):
+        raise ValueError("Meta data file not found !")
+
+    splites = None
+    with open(splits_file, 'r') as json_file:
+        splites = json.load(json_file)
+
+    # merge predicted meta data
+    meta_data_files = os.listdir(meta_data_dir)
+    meta_data_files = [file.split('.')[0] for file in meta_data_files]
+
+    data = {}
+    gt_data = {}
+    for vidQry in meta_data_files:
+        with open(f'{meta_data_dir}/{vidQry}.json','r') as json_file:
+            data[vidQry] = json.load(json_file)
+        
+        with open(f'{gt_dir}/{vidQry}.json','r') as json_file:
+            gt_data[vidQry] = json.load(json_file)['gtscore']
+
+
+    # init results dict for ploting 
+    header = ['Split Index', 'Sigma', 'Norm', 'Test_F1']
+    results = [header]
+    
+    search_results = {}
+    for p1_ in p1_range:
+            p1 = p1_ / 100
+            for n in [0]:
+                key = (p1, n)
+                splits_f1_scores = []
+
+                for i, split in enumerate(splites):
+
+                    test_keys = split['test_keys']
+            
+                    #test_videos = [mapping[test_k] for test_k in test_keys]
+
+                    test_data = {key: data[key] for key in test_keys}
+
+                    output_file_train = work_dir + f'/{config}_output_file_eval.json'
+                    heuristic_predicator_v5(test_data, output_file_train, p1, 1-p1, alpha=0, norm=n)
+                    
+                    split_f1_score = evaluate_summary_TGVS(output_file_train, gt_data, FragmentSize, SummaryPortaion)
+
+                    splits_f1_scores.append(split_f1_score)
+
+                search_results[key] = np.mean(splits_f1_scores)
+                print(f'{key} : {search_results[key]}')
+
+    best_p1, best_norm = max(search_results, key=search_results.get)
+
+    for i, split in enumerate(splites):
+        print(f'Split {i+1}:')
+        test_keys = split['test_keys']
+        
+        #test_videos = [mapping[test_k] for test_k in test_keys]
+
+        test_data = {key: data[key] for key in test_keys}
+
+        output_file_test = work_dir + f'/{config}_output_file_test.json'
+        heuristic_predicator_v5(test_data, output_file_test, best_p1, 1-best_p1, alpha=0,norm=best_norm)
+        
+
+        test_f1_score = evaluate_summary_TGVS(output_file_test, gt_data, FragmentSize, SummaryPortaion)
+        print(test_f1_score)
+        
+        #Header:['Split Index', 'p1', 'p3', 'Test_F1']
+        state = [i+1, best_p1, best_norm, test_f1_score]
+        results.append(state)
+        
+
+    
+    # clean up
+    if os.path.exists(work_dir + f'/{config}_output_file_eval.json'):
+        os.remove(work_dir + f'/{config}_output_file_eval.json')
+
+    if os.path.exists(work_dir + f'/{config}_output_file_test.json'):
+        os.remove(work_dir + f'/{config}_output_file_test.json')
+
+
+    # plot metrics
+    test_f1_scores = np.array([x[-1] for x in results[1:]])
+    mean_f1_scores = np.mean(test_f1_scores)
+    std_f1_scores = np.std(test_f1_scores)
+    avg = [0]*len(header)
+    avg[-1] = mean_f1_scores
+    results.append(avg)
+    # save results
+    metrics_output_file1 = metric_dir + '/' + metrics_output_file
+    with open(metrics_output_file1, 'w', newline='') as csv_file:
+        writer = csv.writer(csv_file)
+        writer.writerows(results)
+
+
+    print('\n')
+    print(f'Sigma = {best_p1} | Norm = {best_norm}')
+    print(f'Results for {metric} dataset :')
+    print(f'Average F1-score : {mean_f1_scores}  {std_f1_scores}\n')
+
+    return 
+
+
+if __name__ == "__main__":
+
+    parser = argparse.ArgumentParser(description='Hyper Param Search')
+    parser.add_argument("--work_dir", type=str)
+    parser.add_argument("--splits_file", type=str, help="videos directory")
+    parser.add_argument("--gt_dir", type=str, help='Ground truth file path')
+    parser.add_argument("--meta_data_dir", type=str, help="videos directory")
+    parser.add_argument("--metrics_output_file", type=str)
+    parser.add_argument("--config", type=str)
+    args = parser.parse_args()
+    
+
+    for fragment_size in range(1,6,1):
+        for summary_portion in range(25,35,5):
+            print(f'Running : {fragment_size} | {summary_portion}')
+            run(args, fragment_size, summary_portion)

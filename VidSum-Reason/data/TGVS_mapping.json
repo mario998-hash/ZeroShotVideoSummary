@@ -1,0 +1,22 @@
+{   
+    "vidQry_1": { "video_id": "GIVerZ9mUpU", "query": "Filter any scenes that involve violence" },
+    "vidQry_2": { "video_id": "wvDENCN4i3c", "query": "Focus on emotional reactions and scenes" },
+    "vidQry_3": { "video_id": "5L4DQfVIcdg", "query": "Focus on scenes with the coin machine" },
+    "vidQry_4": { "video_id": "5L4DQfVIcdg", "query": "Highlight scenes showing the passage of time" },
+    "vidQry_5": { "video_id": "5L4DQfVIcdg", "query": "Prioritize scenes that demonstrate emotions" },
+    "vidQry_6": { "video_id": "3XA0bB79oGc", "query": "Focus on scenes with both the boy and the puppy" },
+    "vidQry_7": { "video_id": "3XA0bB79oGc", "query": "Exclude scenes with negative emotions" },
+    "vidQry_8": { "video_id": "3XA0bB79oGc", "query": "Prioritize scenes with emotional shifts" },
+    "vidQry_9": { "video_id": "77AA5bWCGlE", "query": "Focus on scenes where the score changes" },
+    "vidQry_10": { "video_id": "77AA5bWCGlE", "query": "Highlight the free throws" },
+    "vidQry_11": { "video_id": "5dY1kU_3fTI", "query": "Highlight every scene where measurement is involved" },
+    "vidQry_12": { "video_id": "5dY1kU_3fTI", "query": "Highlight every scene where non-power (hand) tools are used" },
+    "vidQry_13": { "video_id": "GgtUWB405Mo", "query": "Focus on cars with bright colors" },
+    "vidQry_14": { "video_id": "GgtUWB405Mo", "query": "Highlight crossover vehicles in the video" },
+    "vidQry_15": { "video_id": "GgtUWB405Mo", "query": "Prioritize German cars" },
+    "vidQry_16": { "video_id": "EXeTwQWrcwY", "query": "Show scenes with explosions" },
+    "vidQry_17": { "video_id": "EXeTwQWrcwY", "query": "Show scenes that feature the Joker or that feel related to him" },
+    "vidQry_18": { "video_id": "EXeTwQWrcwY", "query": "Highlight moments that seem like public spectacle or protest" },
+    "vidQry_19": { "video_id": "9QABNfDhSxs", "query": "Exclude scenes that aren’t PG-13 appropriate" },
+    "vidQry_20": { "video_id": "9QABNfDhSxs", "query": "Focus on scenes that show blood" }
+  }

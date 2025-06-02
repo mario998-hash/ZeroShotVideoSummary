@@ -1,0 +1,902 @@
+{
+    "VidQry_1": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Office and Chocolate",
+        "gt_file": "Office_Chocolate_oracle.txt"
+    },
+    "VidQry_2": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Food and Hands",
+        "gt_file": "Food_Hands_oracle.txt"
+    },
+    "VidQry_3": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Sky and Street",
+        "gt_file": "Sky_Street_oracle.txt"
+    },
+    "VidQry_4": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Book and Street",
+        "gt_file": "Book_Street_oracle.txt"
+    },
+    "VidQry_5": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Drink and Food",
+        "gt_file": "Drink_Food_oracle.txt"
+    },
+    "VidQry_6": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Grass and Phone",
+        "gt_file": "Grass_Phone_oracle.txt"
+    },
+    "VidQry_7": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Cupglass and Garden",
+        "gt_file": "Cupglass_Garden_oracle.txt"
+    },
+    "VidQry_8": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Hall and Garden",
+        "gt_file": "Hall_Garden_oracle.txt"
+    },
+    "VidQry_9": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing School and Ocean",
+        "gt_file": "School_Ocean_oracle.txt"
+    },
+    "VidQry_10": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Book and Tree",
+        "gt_file": "Book_Tree_oracle.txt"
+    },
+    "VidQry_11": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Drink and Musicalinstrument",
+        "gt_file": "Drink_Musicalinstrument_oracle.txt"
+    },
+    "VidQry_12": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Food and Sky",
+        "gt_file": "Food_Sky_oracle.txt"
+    },
+    "VidQry_13": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Men and Room",
+        "gt_file": "Men_Room_oracle.txt"
+    },
+    "VidQry_14": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Market and Beach",
+        "gt_file": "Market_Beach_oracle.txt"
+    },
+    "VidQry_15": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Hands and Men",
+        "gt_file": "Hands_Men_oracle.txt"
+    },
+    "VidQry_16": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Car and Petsanimal",
+        "gt_file": "Car_Petsanimal_oracle.txt"
+    },
+    "VidQry_17": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Face and Party",
+        "gt_file": "Face_Party_oracle.txt"
+    },
+    "VidQry_18": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Sign and Musicalinstrument",
+        "gt_file": "Sign_Musicalinstrument_oracle.txt"
+    },
+    "VidQry_19": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Drink and Face",
+        "gt_file": "Drink_Face_oracle.txt"
+    },
+    "VidQry_20": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Chair and Men",
+        "gt_file": "Chair_Men_oracle.txt"
+    },
+    "VidQry_21": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Book and Sun",
+        "gt_file": "Book_Sun_oracle.txt"
+    },
+    "VidQry_22": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Sun and Lake",
+        "gt_file": "Sun_Lake_oracle.txt"
+    },
+    "VidQry_23": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Computer and Boat",
+        "gt_file": "Computer_Boat_oracle.txt"
+    },
+    "VidQry_24": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Building and Petsanimal",
+        "gt_file": "Building_Petsanimal_oracle.txt"
+    },
+    "VidQry_25": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Room and Garden",
+        "gt_file": "Room_Garden_oracle.txt"
+    },
+    "VidQry_26": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Desk and Hands",
+        "gt_file": "Desk_Hands_oracle.txt"
+    },
+    "VidQry_27": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Window and Petsanimal",
+        "gt_file": "Window_Petsanimal_oracle.txt"
+    },
+    "VidQry_28": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Food and Men",
+        "gt_file": "Food_Men_oracle.txt"
+    },
+    "VidQry_29": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Hat and Phone",
+        "gt_file": "Hat_Phone_oracle.txt"
+    },
+    "VidQry_30": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Grass and Student",
+        "gt_file": "Grass_Student_oracle.txt"
+    },
+    "VidQry_31": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Street and Student",
+        "gt_file": "Street_Student_oracle.txt"
+    },
+    "VidQry_32": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Food and Grass",
+        "gt_file": "Food_Grass_oracle.txt"
+    },
+    "VidQry_33": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Sky and Tree",
+        "gt_file": "Sky_Tree_oracle.txt"
+    },
+    "VidQry_34": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Face and Phone",
+        "gt_file": "Face_Phone_oracle.txt"
+    },
+    "VidQry_35": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Grass and Hall",
+        "gt_file": "Grass_Hall_oracle.txt"
+    },
+    "VidQry_36": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Lady and Boat",
+        "gt_file": "Lady_Boat_oracle.txt"
+    },
+    "VidQry_37": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Party and Tree",
+        "gt_file": "Party_Tree_oracle.txt"
+    },
+    "VidQry_38": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Phone and Sun",
+        "gt_file": "Phone_Sun_oracle.txt"
+    },
+    "VidQry_39": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Sky and Student",
+        "gt_file": "Sky_Student_oracle.txt"
+    },
+    "VidQry_40": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Shoes and Bed",
+        "gt_file": "Shoes_Bed_oracle.txt"
+    },
+    "VidQry_41": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Grass and Kids",
+        "gt_file": "Grass_Kids_oracle.txt"
+    },
+    "VidQry_42": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Chair and Desk",
+        "gt_file": "Chair_Desk_oracle.txt"
+    },
+    "VidQry_43": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Grass and Shoes",
+        "gt_file": "Grass_Shoes_oracle.txt"
+    },
+    "VidQry_44": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Desk and Face",
+        "gt_file": "Desk_Face_oracle.txt"
+    },
+    "VidQry_45": {
+        "video_id": "P01",
+        "query": "Focus on scenes containing Desk and Office",
+        "gt_file": "Desk_Office_oracle.txt"
+    },
+    "VidQry_46": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Computer and Park",
+        "gt_file": "Computer_Park_oracle.txt"
+    },
+    "VidQry_47": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Blonde and Book",
+        "gt_file": "Blonde_Book_oracle.txt"
+    },
+    "VidQry_48": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Food and Men",
+        "gt_file": "Food_Men_oracle.txt"
+    },
+    "VidQry_49": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Computer and Shoes",
+        "gt_file": "Computer_Shoes_oracle.txt"
+    },
+    "VidQry_50": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Building and Food",
+        "gt_file": "Building_Food_oracle.txt"
+    },
+    "VidQry_51": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Lady and Street",
+        "gt_file": "Lady_Street_oracle.txt"
+    },
+    "VidQry_52": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Hands and Men",
+        "gt_file": "Hands_Men_oracle.txt"
+    },
+    "VidQry_53": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Hands and Lady",
+        "gt_file": "Hands_Lady_oracle.txt"
+    },
+    "VidQry_54": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Garden and Phone",
+        "gt_file": "Garden_Phone_oracle.txt"
+    },
+    "VidQry_55": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Party and Phone",
+        "gt_file": "Party_Phone_oracle.txt"
+    },
+    "VidQry_56": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Desk and Hands",
+        "gt_file": "Desk_Hands_oracle.txt"
+    },
+    "VidQry_57": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Street and School",
+        "gt_file": "Street_School_oracle.txt"
+    },
+    "VidQry_58": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Men and Bed",
+        "gt_file": "Men_Bed_oracle.txt"
+    },
+    "VidQry_59": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Book and Park",
+        "gt_file": "Book_Park_oracle.txt"
+    },
+    "VidQry_60": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Street and Window",
+        "gt_file": "Street_Window_oracle.txt"
+    },
+    "VidQry_61": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Flower and Student",
+        "gt_file": "Flower_Student_oracle.txt"
+    },
+    "VidQry_62": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Face and Baby",
+        "gt_file": "Face_Baby_oracle.txt"
+    },
+    "VidQry_63": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Park and Room",
+        "gt_file": "Park_Room_oracle.txt"
+    },
+    "VidQry_64": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Kids and Ocean",
+        "gt_file": "Kids_Ocean_oracle.txt"
+    },
+    "VidQry_65": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Hands and Tree",
+        "gt_file": "Hands_Tree_oracle.txt"
+    },
+    "VidQry_66": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Chair and Hall",
+        "gt_file": "Chair_Hall_oracle.txt"
+    },
+    "VidQry_67": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Sign and Petsanimal",
+        "gt_file": "Sign_Petsanimal_oracle.txt"
+    },
+    "VidQry_68": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Hall and Park",
+        "gt_file": "Hall_Park_oracle.txt"
+    },
+    "VidQry_69": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Kids and Office",
+        "gt_file": "Kids_Office_oracle.txt"
+    },
+    "VidQry_70": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Park and Bed",
+        "gt_file": "Park_Bed_oracle.txt"
+    },
+    "VidQry_71": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Office and Shoes",
+        "gt_file": "Office_Shoes_oracle.txt"
+    },
+    "VidQry_72": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Grass and Bed",
+        "gt_file": "Grass_Bed_oracle.txt"
+    },
+    "VidQry_73": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Toy and Lake",
+        "gt_file": "Toy_Lake_oracle.txt"
+    },
+    "VidQry_74": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Drink and Hands",
+        "gt_file": "Drink_Hands_oracle.txt"
+    },
+    "VidQry_75": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Face and Food",
+        "gt_file": "Face_Food_oracle.txt"
+    },
+    "VidQry_76": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Phone and Lake",
+        "gt_file": "Phone_Lake_oracle.txt"
+    },
+    "VidQry_77": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Drink and Room",
+        "gt_file": "Drink_Room_oracle.txt"
+    },
+    "VidQry_78": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Face and Lady",
+        "gt_file": "Face_Lady_oracle.txt"
+    },
+    "VidQry_79": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Chair and Men",
+        "gt_file": "Chair_Men_oracle.txt"
+    },
+    "VidQry_80": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Drink and Park",
+        "gt_file": "Drink_Park_oracle.txt"
+    },
+    "VidQry_81": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Room and Boat",
+        "gt_file": "Room_Boat_oracle.txt"
+    },
+    "VidQry_82": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Sky and Dance",
+        "gt_file": "Sky_Dance_oracle.txt"
+    },
+    "VidQry_83": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Car and School",
+        "gt_file": "Car_School_oracle.txt"
+    },
+    "VidQry_84": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Sun and Ocean",
+        "gt_file": "Sun_Ocean_oracle.txt"
+    },
+    "VidQry_85": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Cupglass and Room",
+        "gt_file": "Cupglass_Room_oracle.txt"
+    },
+    "VidQry_86": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Book and Garden",
+        "gt_file": "Book_Garden_oracle.txt"
+    },
+    "VidQry_87": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Market and Ocean",
+        "gt_file": "Market_Ocean_oracle.txt"
+    },
+    "VidQry_88": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Computer and Kids",
+        "gt_file": "Computer_Kids_oracle.txt"
+    },
+    "VidQry_89": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Building and Boat",
+        "gt_file": "Building_Boat_oracle.txt"
+    },
+    "VidQry_90": {
+        "video_id": "P02",
+        "query": "Focus on scenes containing Garden and Party",
+        "gt_file": "Garden_Party_oracle.txt"
+    },
+    "VidQry_91": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Food and Hands",
+        "gt_file": "Food_Hands_oracle.txt"
+    },
+    "VidQry_92": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Computer and Dance",
+        "gt_file": "Computer_Dance_oracle.txt"
+    },
+    "VidQry_93": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Drink and Tree",
+        "gt_file": "Drink_Tree_oracle.txt"
+    },
+    "VidQry_94": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Food and Lady",
+        "gt_file": "Food_Lady_oracle.txt"
+    },
+    "VidQry_95": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Desk and Food",
+        "gt_file": "Desk_Food_oracle.txt"
+    },
+    "VidQry_96": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Food and Room",
+        "gt_file": "Food_Room_oracle.txt"
+    },
+    "VidQry_97": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Cupglass and Desk",
+        "gt_file": "Cupglass_Desk_oracle.txt"
+    },
+    "VidQry_98": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Book and Street",
+        "gt_file": "Book_Street_oracle.txt"
+    },
+    "VidQry_99": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Market and Beach",
+        "gt_file": "Market_Beach_oracle.txt"
+    },
+    "VidQry_100": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Drink and Food",
+        "gt_file": "Drink_Food_oracle.txt"
+    },
+    "VidQry_101": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Computer and Grass",
+        "gt_file": "Computer_Grass_oracle.txt"
+    },
+    "VidQry_102": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Cupglass and Grass",
+        "gt_file": "Cupglass_Grass_oracle.txt"
+    },
+    "VidQry_103": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Desk and Tree",
+        "gt_file": "Desk_Tree_oracle.txt"
+    },
+    "VidQry_104": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Office and Tree",
+        "gt_file": "Office_Tree_oracle.txt"
+    },
+    "VidQry_105": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Car and Chocolate",
+        "gt_file": "Car_Chocolate_oracle.txt"
+    },
+    "VidQry_106": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Men and Sun",
+        "gt_file": "Men_Sun_oracle.txt"
+    },
+    "VidQry_107": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Room and Baby",
+        "gt_file": "Room_Baby_oracle.txt"
+    },
+    "VidQry_108": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Chair and Dance",
+        "gt_file": "Chair_Dance_oracle.txt"
+    },
+    "VidQry_109": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Cupglass and Lake",
+        "gt_file": "Cupglass_Lake_oracle.txt"
+    },
+    "VidQry_110": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Chocolate and Tree",
+        "gt_file": "Chocolate_Tree_oracle.txt"
+    },
+    "VidQry_111": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Hands and Boat",
+        "gt_file": "Hands_Boat_oracle.txt"
+    },
+    "VidQry_112": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Building and Garden",
+        "gt_file": "Building_Garden_oracle.txt"
+    },
+    "VidQry_113": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Chocolate and Food",
+        "gt_file": "Chocolate_Food_oracle.txt"
+    },
+    "VidQry_114": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Computer and Cupglass",
+        "gt_file": "Computer_Cupglass_oracle.txt"
+    },
+    "VidQry_115": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Market and Sun",
+        "gt_file": "Market_Sun_oracle.txt"
+    },
+    "VidQry_116": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Chair and Tree",
+        "gt_file": "Chair_Tree_oracle.txt"
+    },
+    "VidQry_117": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Phone and Ocean",
+        "gt_file": "Phone_Ocean_oracle.txt"
+    },
+    "VidQry_118": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Cupglass and Room",
+        "gt_file": "Cupglass_Room_oracle.txt"
+    },
+    "VidQry_119": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Hall and Ocean",
+        "gt_file": "Hall_Ocean_oracle.txt"
+    },
+    "VidQry_120": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Book and Tree",
+        "gt_file": "Book_Tree_oracle.txt"
+    },
+    "VidQry_121": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Chocolate and Phone",
+        "gt_file": "Chocolate_Phone_oracle.txt"
+    },
+    "VidQry_122": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Room and Sky",
+        "gt_file": "Room_Sky_oracle.txt"
+    },
+    "VidQry_123": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Grass and Beach",
+        "gt_file": "Grass_Beach_oracle.txt"
+    },
+    "VidQry_124": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Sun and Student",
+        "gt_file": "Sun_Student_oracle.txt"
+    },
+    "VidQry_125": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Desk and Hands",
+        "gt_file": "Desk_Hands_oracle.txt"
+    },
+    "VidQry_126": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Hands and Room",
+        "gt_file": "Hands_Room_oracle.txt"
+    },
+    "VidQry_127": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Book and Lady",
+        "gt_file": "Book_Lady_oracle.txt"
+    },
+    "VidQry_128": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Lady and Sports",
+        "gt_file": "Lady_Sports_oracle.txt"
+    },
+    "VidQry_129": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Sign and Student",
+        "gt_file": "Sign_Student_oracle.txt"
+    },
+    "VidQry_130": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Car and Tree",
+        "gt_file": "Car_Tree_oracle.txt"
+    },
+    "VidQry_131": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Face and Boat",
+        "gt_file": "Face_Boat_oracle.txt"
+    },
+    "VidQry_132": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Cupglass and Window",
+        "gt_file": "Cupglass_Window_oracle.txt"
+    },
+    "VidQry_133": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Grass and Men",
+        "gt_file": "Grass_Men_oracle.txt"
+    },
+    "VidQry_134": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Chocolate and Street",
+        "gt_file": "Chocolate_Street_oracle.txt"
+    },
+    "VidQry_135": {
+        "video_id": "P03",
+        "query": "Focus on scenes containing Street and Kids",
+        "gt_file": "Street_Kids_oracle.txt"
+    },
+    "VidQry_136": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Phone and Baby",
+        "gt_file": "Phone_Baby_oracle.txt"
+    },
+    "VidQry_137": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Car and Market",
+        "gt_file": "Car_Market_oracle.txt"
+    },
+    "VidQry_138": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Room and Window",
+        "gt_file": "Room_Window_oracle.txt"
+    },
+    "VidQry_139": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Student and Flower",
+        "gt_file": "Student_Flower_oracle.txt"
+    },
+    "VidQry_140": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Car and Food",
+        "gt_file": "Car_Food_oracle.txt"
+    },
+    "VidQry_141": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Office and Park",
+        "gt_file": "Office_Park_oracle.txt"
+    },
+    "VidQry_142": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Computer and Beach",
+        "gt_file": "Computer_Beach_oracle.txt"
+    },
+    "VidQry_143": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Blonde and Food",
+        "gt_file": "Blonde_Food_oracle.txt"
+    },
+    "VidQry_144": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Food and Street",
+        "gt_file": "Food_Street_oracle.txt"
+    },
+    "VidQry_145": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Face and Party",
+        "gt_file": "Face_Party_oracle.txt"
+    },
+    "VidQry_146": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Park and Sun",
+        "gt_file": "Park_Sun_oracle.txt"
+    },
+    "VidQry_147": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Building and Window",
+        "gt_file": "Building_Window_oracle.txt"
+    },
+    "VidQry_148": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Desk and Ocean",
+        "gt_file": "Desk_Ocean_oracle.txt"
+    },
+    "VidQry_149": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Shoes and Baby",
+        "gt_file": "Shoes_Baby_oracle.txt"
+    },
+    "VidQry_150": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Men and Sun",
+        "gt_file": "Men_Sun_oracle.txt"
+    },
+    "VidQry_151": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Drink and Tree",
+        "gt_file": "Drink_Tree_oracle.txt"
+    },
+    "VidQry_152": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Building and School",
+        "gt_file": "Building_School_oracle.txt"
+    },
+    "VidQry_153": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing School and Toy",
+        "gt_file": "School_Toy_oracle.txt"
+    },
+    "VidQry_154": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Hall and Student",
+        "gt_file": "Hall_Student_oracle.txt"
+    },
+    "VidQry_155": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Garden and Office",
+        "gt_file": "Garden_Office_oracle.txt"
+    },
+    "VidQry_156": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Car and Office",
+        "gt_file": "Car_Office_oracle.txt"
+    },
+    "VidQry_157": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Desk and Men",
+        "gt_file": "Desk_Men_oracle.txt"
+    },
+    "VidQry_158": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Hall and Lady",
+        "gt_file": "Hall_Lady_oracle.txt"
+    },
+    "VidQry_159": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Book and Chair",
+        "gt_file": "Book_Chair_oracle.txt"
+    },
+    "VidQry_160": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Blonde and Beach",
+        "gt_file": "Blonde_Beach_oracle.txt"
+    },
+    "VidQry_161": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Hall and Park",
+        "gt_file": "Hall_Park_oracle.txt"
+    },
+    "VidQry_162": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Food and Garden",
+        "gt_file": "Food_Garden_oracle.txt"
+    },
+    "VidQry_163": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Lady and Boat",
+        "gt_file": "Lady_Boat_oracle.txt"
+    },
+    "VidQry_164": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Book and Sports",
+        "gt_file": "Book_Sports_oracle.txt"
+    },
+    "VidQry_165": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Sun and Tree",
+        "gt_file": "Sun_Tree_oracle.txt"
+    },
+    "VidQry_166": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Computer and Room",
+        "gt_file": "Computer_Room_oracle.txt"
+    },
+    "VidQry_167": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Blonde and Garden",
+        "gt_file": "Blonde_Garden_oracle.txt"
+    },
+    "VidQry_168": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Chair and Men",
+        "gt_file": "Chair_Men_oracle.txt"
+    },
+    "VidQry_169": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Car and Sign",
+        "gt_file": "Car_Sign_oracle.txt"
+    },
+    "VidQry_170": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Room and Boat",
+        "gt_file": "Room_Boat_oracle.txt"
+    },
+    "VidQry_171": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Office and Boat",
+        "gt_file": "Office_Boat_oracle.txt"
+    },
+    "VidQry_172": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Sun and Bed",
+        "gt_file": "Sun_Bed_oracle.txt"
+    },
+    "VidQry_173": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Food and Sky",
+        "gt_file": "Food_Sky_oracle.txt"
+    },
+    "VidQry_174": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Cupglass and Boat",
+        "gt_file": "Cupglass_Boat_oracle.txt"
+    },
+    "VidQry_175": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Desk and Room",
+        "gt_file": "Desk_Room_oracle.txt"
+    },
+    "VidQry_176": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Car and Ocean",
+        "gt_file": "Car_Ocean_oracle.txt"
+    },
+    "VidQry_177": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Garden and Sign",
+        "gt_file": "Garden_Sign_oracle.txt"
+    },
+    "VidQry_178": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Garden and Hall",
+        "gt_file": "Garden_Hall_oracle.txt"
+    },
+    "VidQry_179": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Hands and Lady",
+        "gt_file": "Hands_Lady_oracle.txt"
+    },
+    "VidQry_180": {
+        "video_id": "P04",
+        "query": "Focus on scenes containing Car and Chocolate",
+        "gt_file": "Car_Chocolate_oracle.txt"
+    }
+}

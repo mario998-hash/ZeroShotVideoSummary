@@ -1,0 +1,132 @@
+[
+    {
+        "train_keys": [
+            "vidQry_6",
+            "vidQry_3",
+            "vidQry_20",
+            "vidQry_15",
+            "vidQry_17",
+            "vidQry_1",
+            "vidQry_10",
+            "vidQry_7",
+            "vidQry_9",
+            "vidQry_11",
+            "vidQry_8",
+            "vidQry_2",
+            "vidQry_4",
+            "vidQry_13",
+            "vidQry_14",
+            "vidQry_16"
+        ],
+        "test_keys": [
+            "vidQry_19",
+            "vidQry_18",
+            "vidQry_12",
+            "vidQry_5"
+        ]
+    },
+    {
+        "train_keys": [
+            "vidQry_18",
+            "vidQry_5",
+            "vidQry_15",
+            "vidQry_14",
+            "vidQry_19",
+            "vidQry_12",
+            "vidQry_1",
+            "vidQry_11",
+            "vidQry_8",
+            "vidQry_9",
+            "vidQry_20",
+            "vidQry_4",
+            "vidQry_2",
+            "vidQry_3",
+            "vidQry_17",
+            "vidQry_10"
+        ],
+        "test_keys": [
+            "vidQry_6",
+            "vidQry_7",
+            "vidQry_13",
+            "vidQry_16"
+        ]
+    },
+    {
+        "train_keys": [
+            "vidQry_18",
+            "vidQry_15",
+            "vidQry_20",
+            "vidQry_7",
+            "vidQry_5",
+            "vidQry_3",
+            "vidQry_4",
+            "vidQry_13",
+            "vidQry_16",
+            "vidQry_8",
+            "vidQry_17",
+            "vidQry_19",
+            "vidQry_12",
+            "vidQry_6",
+            "vidQry_10",
+            "vidQry_11"
+        ],
+        "test_keys": [
+            "vidQry_2",
+            "vidQry_9",
+            "vidQry_14",
+            "vidQry_1"
+        ]
+    },
+    {
+        "train_keys": [
+            "vidQry_1",
+            "vidQry_6",
+            "vidQry_18",
+            "vidQry_7",
+            "vidQry_14",
+            "vidQry_8",
+            "vidQry_9",
+            "vidQry_10",
+            "vidQry_13",
+            "vidQry_12",
+            "vidQry_5",
+            "vidQry_2",
+            "vidQry_16",
+            "vidQry_19",
+            "vidQry_20",
+            "vidQry_11"
+        ],
+        "test_keys": [
+            "vidQry_17",
+            "vidQry_15",
+            "vidQry_3",
+            "vidQry_4"
+        ]
+    },
+    {
+        "train_keys": [
+            "vidQry_13",
+            "vidQry_5",
+            "vidQry_15",
+            "vidQry_14",
+            "vidQry_2",
+            "vidQry_3",
+            "vidQry_9",
+            "vidQry_16",
+            "vidQry_4",
+            "vidQry_1",
+            "vidQry_17",
+            "vidQry_19",
+            "vidQry_18",
+            "vidQry_7",
+            "vidQry_6",
+            "vidQry_12"
+        ],
+        "test_keys": [
+            "vidQry_11",
+            "vidQry_8",
+            "vidQry_10",
+            "vidQry_20"
+        ]
+    }
+]

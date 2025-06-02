@@ -1,0 +1,74 @@
+Fragment Size: 2
+Summary Portion: 15
+Fragment size : 2 || Summry portain : 15
+Mean F1-score : 15.74030900699354
+
+Fragment Size: 2
+Summary Portion: 20
+Fragment size : 2 || Summry portain : 20
+Mean F1-score : 19.496583416388297
+
+Fragment Size: 2
+Summary Portion: 26
+Fragment size : 2 || Summry portain : 26
+Mean F1-score : 25.176252651474112
+
+Fragment Size: 2
+Summary Portion: 32
+Fragment size : 2 || Summry portain : 32
+Mean F1-score : 31.16538605164303
+
+Fragment Size: 3
+Summary Portion: 15
+Fragment size : 3 || Summry portain : 15
+Mean F1-score : 14.03045952214905
+
+Fragment Size: 3
+Summary Portion: 20
+Fragment size : 3 || Summry portain : 20
+Mean F1-score : 23.200073729270272
+
+Fragment Size: 3
+Summary Portion: 26
+Fragment size : 3 || Summry portain : 26
+Mean F1-score : 27.81510725543637
+
+Fragment Size: 3
+Summary Portion: 32
+Fragment size : 3 || Summry portain : 32
+Mean F1-score : 32.8090210629641
+
+Fragment Size: 4
+Summary Portion: 15
+Fragment size : 4 || Summry portain : 15
+Mean F1-score : 12.555797689932431
+
+Fragment Size: 4
+Summary Portion: 20
+Fragment size : 4 || Summry portain : 20
+Mean F1-score : 18.467200912946364
+
+Fragment Size: 4
+Summary Portion: 26
+Fragment size : 4 || Summry portain : 26
+Mean F1-score : 23.972609214785123
+
+Fragment Size: 4
+Summary Portion: 32
+Fragment size : 4 || Summry portain : 32
+Mean F1-score : 30.248623372858965
+
+Fragment Size: 2
+Summary Portion: 36
+Fragment size : 2 || Summry portain : 36
+Mean F1-score : 34.9129655472261
+
+Fragment Size: 3
+Summary Portion: 36
+Fragment size : 3 || Summry portain : 36
+Mean F1-score : 34.78955171629752
+
+Fragment Size: 4
+Summary Portion: 36
+Fragment size : 4 || Summry portain : 36
+Mean F1-score : 34.23234425754668

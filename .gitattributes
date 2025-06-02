@@ -1,0 +1,2 @@
+VidSum-Reason/data/videos/*.mp4 filter=lfs diff=lfs merge=lfs -text
+Standard-VidSum/*.h5 filter=lfs diff=lfs merge=lfs -text
