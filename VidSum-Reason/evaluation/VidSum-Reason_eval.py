@@ -151,11 +151,3 @@ if __name__ == "__main__":
     run(args)
 
 
-"""
-python /root/vidSum/src/evaluation/TGVS_eval.py \
---work_dir /root/TGVS \
---splits_file /root/data/TGVS/TGVS_splits_5.json \
---gt_dir /root/data/TGVS/GT \
---meta_data_dir /root/TGVS \
---norm=12
-"""

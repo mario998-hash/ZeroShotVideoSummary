@@ -5,24 +5,19 @@ import json
 # scene detection
 from scenedetect import VideoManager, SceneManager
 from scenedetect.detectors import ContentDetector
-from moviepy.video.io.VideoFileClip import VideoFileClip
-from moviepy.editor import concatenate_videoclips, ColorClip
 # scores prediction
 import numpy as np
-from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
 import os
 import sys 
 import time
-sys.path.append('/root/vidSum')
+sys.path.append('vidSum')
 from src.utils import *
 # descriptions
 from description_generator import DescriptionGenerator
-from clusters import ClusterFrame
-from embeddings import Embedder
-from embeddings_dino import Embedder_dino
 import openai
 from sklearn.metrics.pairwise import cosine_similarity
+import csv
 
 
 def generate_scene_prompt(video_description, part_description, user_query):
@@ -54,6 +49,43 @@ def generate_scene_prompt(video_description, part_description, user_query):
 
     return prompt
 
+
+def generate_scene_prompt_QFVS(video_description, part_description, user_queries):
+    prompt = ""
+    prompt += "You are tasked with evaluating the importance of a specific scene within a larger video, considering its role in the overall narrative and message of the video. I've provided two descriptions below: one for the entire video and one for the specific scene (part) within that video.\n"
+    prompt += "Your goal is to assess how critical this particular segment is to the understanding or development of the video's main themes, messages, or emotional impact.\n"
+    if len(user_queries) > 0:
+        prompt += f"\nThe user has provided the following content preferences to guide the summarization:\n"
+        prompt += f"**User Queries**:\n"
+        for i, query in enumerate(user_queries, 1):
+            prompt += f"Query {i} :  {query}\n"
+        prompt += (
+            "When assigning a score, consider how well the scene aligns with each query. "
+            "Scenes that closely match or contradict the user’s intent should be scored accordingly, "
+            "reflecting their relevance or irrelevance to the desired summary focus.\n"
+        )
+        prompt += "Assign a score representing the importance of the scene **for each user query**.\n"
+        prompt += "If the scene is not clearly related to any of the queries, assign a score based on the default scale and criteria below.\n"
+
+    prompt += "Assign an importance score on a scale of 1 to 100, based on how crucial it is to the overall video. The scale is defined as follows:\n"
+    prompt += "* 1-20: Minimally important (contributes very little to the overall theme or message)\n"
+    prompt += "* 21-40: Somewhat important (offers limited context or details that support the main theme)\n"
+    prompt += "* 41-60: Moderately important (provides useful context or details that support the main theme)\n"
+    prompt += "* 61-80: Quite important (adds significant context or detail that enhances understanding of the main theme)\n"
+    prompt += "* 81-100: Highly important (crucial to understanding or conveying the main message of the video)\n"
+    prompt += "When evaluating, focus on the core narrative or emotional impact of the video. Only assign high scores (80+) to the segments that **directly drive the main theme or message forward**. Be critical and biased towards giving low scores to segments that do not add significant value to the overall narrative or theme. The distribution of high scores should be low and reserved for only the most crucial moments in the video.\n"
+    prompt += "The video should be summarized briefly, so please evaluate whether the scene is critical to include in the summary of the video, based on its contribution to the core message. **Prioritize scenes that are essential for a concise summary and omit secondary or supporting moments unless they provide meaningful context.**\n"
+    prompt += "Provide only the score in your answer, without any explanation or reasoning.\n"
+    prompt += "**Following this Format:**\n"
+    prompt += "Return a single line with one importance score per query, separated by commas.\n"
+    prompt += "For example: 25,60,15,80, ... \n"
+
+    prompt += "Whole Video Description: " + video_description + '\n'
+    prompt += "Part Description: " + part_description + '\n'
+
+    return prompt
+
+
 def init_description_model(description_model_name):
     pretrained = description_model_name
     model_name = "llava_qwen"
@@ -62,6 +94,7 @@ def init_description_model(description_model_name):
     conv_model_template = "qwen_1_5"
     model = DescriptionGenerator(pretrained, model_name, conv_model_template, device=device, device_map=device_map)
     return model
+
 
 class myModel:
 
@@ -146,8 +179,6 @@ class myModel:
         lens_diff = lens[1:] - lens[:-1]
         mn = np.argmin(lens_diff)
         selected_sst = (acc_range[mn+1] + acc_range[mn])/2
-        print(self.video_name)
-        print(selected_sst)
         return int(selected_sst)
 
     # detect scences
@@ -324,38 +355,67 @@ class myModel:
 
         return scores
     
-    def compute_scenes_score_all(self, discription_file_name, scene_frames):
-        # load descriptions
-        descriptions = []
+    #
+    def compute_scenes_score_QFVS(self, discription_file_name, user_queries):
+        # Load descriptions
         with open(discription_file_name, "r") as json_file:
             descriptions = json.load(json_file)
 
-        masked_scenes = []
-        for i,(start, end) in enumerate(zip(scene_frames[:-1], scene_frames[1:])):
-            key = (i+1, descriptions[f'scene_{i+1}_description'], end-start, (start, end-1))
-            masked_scenes.append(key)
-        
-        prompt = generate_scene_prompt_all(descriptions['video_description'], self.n_frames, masked_scenes)
-        input_size = len(prompt.split(' '))
-        if(self.token_count  + input_size > self.TPM):
-            print('sleep')
-            time.sleep(60)
-            self.token_count = 0
+        csv_file = f'{self.work_dir}/{self.video_name}_output.csv'
+        if not os.path.exists(csv_file):
+            with open(csv_file, 'w', newline='') as file:
+                writer = csv.writer(file)
+                writer.writerow(['scene_num', 'output'])
+                
+        num_queries = len(user_queries)
+        query_scores = [[] for _ in range(num_queries)]
+        i = 1
+        while i < len(descriptions.keys()):
+            print(f'Processing Scene {i} ... ')
+            input_text = generate_scene_prompt_QFVS(
+                descriptions['video_description'],
+                descriptions[f'scene_{i}_description'],
+                user_queries
+            )
+
+            input_size = len(input_text.split())
+
+            if self.token_count + input_size > self.TPM:
+                print("Sleeping for rate limit")
+                time.sleep(60)
+                self.token_count = 0
+
+            response = openai.ChatCompletion.create(
+                model=self.gpt_model,
+                messages=[{"role": "user", "content": input_text}],
+                temperature=0.5,
+            )
+            output_text = response['choices'][0]['message']['content']
+            print(output_text)
+
+            # Parse response: assume response is like "34, 15, 87, ..."
+            try :
+                scene_scores = [int(s.strip()) for s in output_text.split(',')]
+            except:
+                self.token_count += input_size
+                continue
+
+            if len(scene_scores) != num_queries :
+                continue
             
-        self.token_count += input_size
-        response = openai.ChatCompletion.create(
-            model=self.gpt_model,
-            messages=[
-                {"role": "user", "content": prompt}
-            ], temperature=0.2)
-            #
-        output_text = response['choices'][0]['message']['content']
-        scores = output_text.split('\n')
-        scores = [x.split(':')[1] for x in scores]
-        scores = [int(x.strip()) for x in scores]
+            for q_idx, score in enumerate(scene_scores):
+                query_scores[q_idx].append(score)
 
-        return scores
+            # Append new rows
+            csv_file = f'{self.work_dir}/{self.video_name}_output.csv'
+            with open(csv_file, 'a', newline='') as file:
+                writer = csv.writer(file)
+                writer.writerow([i, output_text])
+            i += 1
 
+        # read from csv
+        return query_scores  #num_queries X num_scenes
+    
     # segment score 
     def calc_frames_data(self, cluster_algo, start_frames, n_frames):
         frames_consistency = []
@@ -413,98 +473,3 @@ class myModel:
         with open(self.prediciton_meta_data_file, 'w') as json_file:
             json.dump(video_prediction_meta_data, json_file, indent=4)
         print(self.prediciton_meta_data_file)
-
-def run(args):
-    #openai.api_key = args.openai_key
-
-    if args.video_name == "":
-        videos_names = list(os.listdir(args.video_dir))
-        videos_names = [name.split('.')[0] for name in videos_names if name.endswith('.' + args.video_type)]
-    else :
-        videos_names = [args.video_name]
-
-    device = "cuda"
-    my_model = myModel(args)
-    my_model.init_pipline_dirs(['sceneDesc', 'FrameEmb','PredMetaData'])
-
-    # init embedder
-    embedder = Embedder(device)
-    # init Clusterer
-    cluster_algo = ClusterFrame() 
-
-    if args.ds == 'tvsum':
-        MN_FRAMES = 150
-        og_data = {'kLxoNp-UchI': 45, 'AwmHb44_ouw': 17, 'VuWGsYPqAX8': 65, 'NyBmCxDoHJU': 55, '3eYKfiOEJNs': 47, 'fWutDQy1nnY': 21, '0tmA_C6XwfM': 13, 'JgHubY5Vw3Y': 5, 'cjibtmSLxQ4': 37, 'z_6gVvQb2d0': 33, 'b626MiF1ew4': 57, 'J0nA4VgnoCo': 15, 'xwqBXPGE9pQ': 5, '-esJrBWj2d8': 11, 'JKpqYvAdIsw': 25, 'byxOvuiIJV0': 31, 'xxdtq8mxegs': 3, 'EYqVtI9YWJA': 15, 'XkqCExn6_Us': 57, 'oDXZc0tZe04': 13, 'LRw_obCPUt0': 11, 'eQu1rNs0an0': 9, '37rzWOQsNIw': 17, 'EE-bNr36nyA': 5, 'XzYM3PfTM4w': 3, 'sTEELN-vY30': 25, 'WG0MBPpPC6I': 67, 'jcoYJXDG9sw': 5, 'E11zDS9XGzg': 17, '98MoyGZKHXc': 63, 'Se3oxnaPsz0': 43, 'iVt07TCkFM0': 17, 'Bhxk-O1Y7Ho': 35, 'WxtbjNsCQ8A': 25, 'qqR6AEXwxoQ': 5, '91IHQYk1IQM': 59, 'RBCABdttQmI': 63, 'i3wAGJaaktw': 9, 'HT5vyqe0Xaw': 13, '_xMr-HKMfVA': 43, 'vdmoEJ5YbrQ': 23, 'Hl-__g2gn_A': 15, 'akI8YFjEmUw': 9, 'xmEERLqJ2kU': 7, 'uGu_10sucQo': 45, 'Yi4Ij2NM7U4': 9, 'GsAD1KT1xo8': 31, '4wU_LUjG5Ic': 59, 'PJrm840pAUI': 65, 'gzDbaEs1Rlg': 13}
-    elif args.ds == 'summe':
-        MN_FRAMES = 150
-        og_data = {'Air_Force_One': 2, 'Bearpark_climbing': 27, 'Base jumping': 21, 'Uncut_Evening_Flight': 11, 'Statue of Liberty': 3, 'Eiffel Tower': 21, 'Car_railcrossing': 3, 'paluma_jump': 17, 'Scuba': 25, 'Notre_Dame': 23, 'Paintball': 3, 'Excavators river crossing': 13, 'Kids_playing_in_leaves': 13, 'Bus_in_Rock_Tunnel': 15, 'car_over_camera': 5, 'Cockpit_Landing': 17, 'Bike Polo': 25, 'Jumps': 9, 'Saving dolphines': 9, 'St Maarten Landing': 7, 'Cooking': 21, 'playing_ball': 21, 'Playing_on_water_slide': 17, 'Valparaiso_Downhill': 23, 'Fire Domino': 23}
-    else:
-        print('XX')
-        assert args.ds == 'qfvs', 'Error in --ds arg'
-        MN_FRAMES = 150
-        og_data = {'P01': 53, 'P02':47, 'P03':49, 'P04':29}
-
-
-    print(f'MNF : {MN_FRAMES}')
-    for video_name in videos_names:
-        my_model.set_video_meta_data(video_name)
-        if os.path.exists(my_model.prediciton_meta_data_file):
-            continue
-        print(f'{video_name} Starting ...')
-        torch.cuda.empty_cache()
-
-        #scene detection
-        sst = og_data[video_name]
-        print(sst)
-        scene_list, start_frames = my_model.detect_scences(sst)
-        if start_frames[-1] < my_model.n_frames:
-            start_frames.append(my_model.n_frames)
-        print(my_model.selected_sst)
-        
-        #cache frame embeddings 
-        frames = fetch_frames(my_model.video_path)
-        if not os.path.exists(my_model.frame_emb_file + '.npy') :
-            embedder.cache_frame_embeddings_v2(my_model.frame_emb_file, frames)
-        torch.cuda.empty_cache()
-        start_frames = my_model.merge_scenes(start_frames, my_model.frame_emb_file + '.npy', min_frames=MN_FRAMES)
-        
-        if start_frames[-1] < my_model.n_frames:
-            start_frames.append(my_model.n_frames)
-
-        # generate scenes discriptions
-        scene_discription_file_name = my_model.generate_scene_descriptions(frames, start_frames)
-        exit(0)
-        scene_scores = my_model.compute_scenes_score(scene_discription_file_name)
-        #scene_scores = np.random.randint(1,100, len(start_frames)-1).tolist()
-
-        frames_consistency, frames_dissimilarity = my_model.calc_frames_data(cluster_algo, start_frames, len(frames))
-
-        # save results
-        my_model.save_results(scene_scores, start_frames, frames_consistency, frames_dissimilarity)
-
-        print(f'{video_name} DONE!')
-        
-
-        
-        
-
-    #print(f'TOKEN CNT : {my_model.token_count}')
-    return 0
-
-if __name__ == "__main__":
-
-    # Create an ArgumentParser object
-    parser = argparse.ArgumentParser(description="MAIN")
-    # Add arguments
-    #parser.add_argument("--openai_key", type=str, default='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')
-    parser.add_argument("--video_name", type=str, default="")
-    parser.add_argument("--ds", type=str,choices=['summe', 'tvsum', 'qfvs'] )
-    parser.add_argument("--video_dir", type=str, help="video/s directory")
-    parser.add_argument("--video_type", type=str, choices=['mp4', 'webm'], help='mp4 or webm')
-    parser.add_argument("--work_dir", type=str)
-    parser.add_argument("--description_model_name", type=str, default="lmms-lab/LLaVA-Video-7B-Qwen2")
-    parser.add_argument("--batch_size", type=int, default=80)
-    parser.add_argument("--min_scene_duration", type=int, default=2)
-    parser.add_argument("--window_size", type=int, default=2)
-    args = parser.parse_args()
-    run(args)

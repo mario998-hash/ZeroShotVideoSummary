@@ -1,23 +1,30 @@
-
+#utils
 import argparse
 import os
 import json
-import numpy as np
+# scene detection
 import torch
 import os
 import sys 
-sys.path.append('/root/vidSum')
+import time
+sys.path.append('vidSum')
 from src.utils import *
+# descriptions
 from clusters import ClusterFrame
 from embeddings import Embedder
+from embeddings_dino import Embedder_dino
 import openai
-from prediction_gpt_L1In import myModel
+from src.model.model import myModel
 
 def solve(args):
 
     openai.api_key = args.openai_key
-    
-    videos_names = [args.video_name]
+    if video_name == '':
+        videos_names = list(os.listdir(args.video_dir))
+        videos_names = [name.split('.')[0] for name in videos_names if name.endswith('.' + args.video_type)]
+    else:
+
+        videos_names = [args.video_name]
     
     user_query = args.user_query
     VidQry = args.VidQry
@@ -32,7 +39,7 @@ def solve(args):
 
     device = "cuda"
     my_model = myModel(args)
-    my_model.init_pipline_dirs(['sceneDesc', 'FrameEmb','PredMetaData'])
+    my_model.init_pipline_dirs(['sceneDesc', 'FrameEmb'])
 
     # init embedder
     embedder = Embedder(device)
@@ -73,11 +80,15 @@ def solve(args):
 
         scene_scores = my_model.compute_scenes_score(scene_discription_file_name, user_query)
 
+        for W in range(1,5,1):
+            my_model.window_size = W
+            meta_dir = f'PredMetaData_{my_model.window_size}' 
+            my_model.init_pipline_dirs([meta_dir])
+            my_model.prediciton_meta_data_dir = my_model.work_dir + f'/PredMetaData_{my_model.window_size}' 
+            frames_consistency, frames_dissimilarity = my_model.calc_frames_data(cluster_algo, start_frames, len(frames))
 
-        frames_consistency, frames_dissimilarity = my_model.calc_frames_data(cluster_algo, start_frames, len(frames))
-
-        # save results
-        my_model.save_results(scene_scores, start_frames, frames_consistency, frames_dissimilarity, user_query)
+            # save results
+            my_model.save_results(scene_scores, start_frames, frames_consistency, frames_dissimilarity, user_query)
 
 
         print(f'{video_name} DONE!')
@@ -100,9 +111,7 @@ if __name__ == "__main__":
     parser.add_argument("--description_model_name", type=str, default="lmms-lab/LLaVA-Video-7B-Qwen2")
     parser.add_argument("--batch_size", type=int, default=80)
     parser.add_argument("--min_scene_duration", type=int, default=2)
-    parser.add_argument("--window_size", type=int, default=1)
-    
-    parser.add_argument("--ds", type=str,choices=['summe',  'tvsum', 'QFVS', 'VidSum-Reason','other'] )
+    parser.add_argument("--segment_duration", type=int, default=1)
     parser.add_argument("--openai_key", type=str, default='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')
 
     args = parser.parse_args()
