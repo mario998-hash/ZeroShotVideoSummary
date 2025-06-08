@@ -2,6 +2,7 @@
 This is the offical implementation of the paper : [Prompts to Summaries: Zero‑Shot Language‑Guided Video Summarization](https://arxiv.org/abs/1234.56789)\
 ![Demo image](./PipeLine_Teaser.jpeg)
 
+🎥 Supplement [video](https://youtu.be/cvoavENyB10) for the paper 
 ---
 
 ## Table of Contents
