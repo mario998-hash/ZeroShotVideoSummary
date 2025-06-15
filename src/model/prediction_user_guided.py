@@ -117,7 +117,6 @@ class myModel:
         self.token_count = 0
         self.TPM = 200_000
         self.gpt_model = "gpt-4o"
-        #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
 
     #
     def set_video_meta_data(self, video_name, VidQry):
@@ -524,7 +523,7 @@ if __name__ == "__main__":
     # Create an ArgumentParser object
     parser = argparse.ArgumentParser(description="MAIN")
     # Add arguments
-    parser.add_argument("--openai_key", type=str, default='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')
+    parser.add_argument("--openai_key", type=str)
     parser.add_argument("--video_name", type=str, default="")
     parser.add_argument("--ds", type=str,choices=['summe','tvsum','other'] )
     parser.add_argument("--video_dir", type=str, help="video/s directory")
@@ -538,16 +537,5 @@ if __name__ == "__main__":
     parser.add_argument("--VidQry", type=str, default='', help='Key for the (video, query) pair - results directory')
     args = parser.parse_args()
     run(args)
-
-"""
-python /root/vidSum/src/model/prediction_user_guided.py \
---video_name d7ijM1jGou0 \
---ds other \
---video_dir /root/data/TGVS/videos \
---video_type mp4 \
---work_dir /root/TGVS \
---user_query 'test' \
---VidQry vidQry_0
-"""
 
 
