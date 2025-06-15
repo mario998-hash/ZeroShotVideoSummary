@@ -98,7 +98,7 @@ if __name__ == "__main__":
     # Create an ArgumentParser object
     parser = argparse.ArgumentParser(description="MAIN")
     # Add arguments
-    parser.add_argument("--openai_key", type=str, default='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')
+    parser.add_argument("--openai_key", type=str)
     parser.add_argument("--video_name", type=str, choices=['P01','P02','P03','P04'])
     parser.add_argument("--video_dir", type=str, help="video/s directory")
     parser.add_argument("--video_type", type=str, choices=['mp4', 'webm'], default='mp4')

@@ -112,7 +112,7 @@ if __name__ == "__main__":
     parser.add_argument("--batch_size", type=int, default=80)
     parser.add_argument("--min_scene_duration", type=int, default=2)
     parser.add_argument("--segment_duration", type=int, default=1)
-    parser.add_argument("--openai_key", type=str, default='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')
+    parser.add_argument("--openai_key", type=str)
 
     args = parser.parse_args()
     solve(args)

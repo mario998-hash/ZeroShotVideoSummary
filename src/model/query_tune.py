@@ -267,16 +267,3 @@ if __name__ == "__main__":
     parser.add_argument("--VidQry", type=str, default='', help='Key for the (video, query) pair - results directory')
     args = parser.parse_args()
     run(args)
-
-
-
-"""
-python /root/vidSum/src/model/query_tune.py \
---video_name wvDENCN4i3c \
---video_dir /root/data/TGVS/videos \
---video_type mp4 \
---work_dir /root/TGVS \
---og_PredMetaData_dir /root/TGVS/PredMetaData_2 \
---window_size 2 \
---VidQry vidQry_2
-"""
